@@ -36,6 +36,9 @@ inputs:
   fail-on-min-severity:
     description: ''
     required: false
+  git-tokens:
+    description: ''
+    required: false
   logs:
     default: 'false'
     description: ''
@@ -98,6 +101,8 @@ runs:
     - ${{ inputs.exclude-policies }}
     - ${{ inputs.fail-on-min-severity &&  '--fail-on-min-severity'}}
     - ${{ inputs.fail-on-min-severity }}
+    - ${{ inputs.git-tokens &&  '--git-tokens'}}
+    - ${{ inputs.git-tokens }}
     - ${{ inputs.logs != 'false' &&  '--logs' || ''}}
     - ${{ inputs.output-file-formats &&  '--output-file-formats'}}
     - ${{ inputs.output-file-formats }}
