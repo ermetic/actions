@@ -33,6 +33,10 @@ inputs:
   exclude-paths:
     description: ''
     required: false
+  exclude-unresolvable:
+    default: 'false'
+    description: ''
+    required: false
   exclude-vulnerabilities:
     description: ''
     required: false  
@@ -103,6 +107,7 @@ runs:
     - ${{ inputs.name }}
     - ${{ inputs.exclude-paths &&  '--exclude-paths'}}
     - ${{ inputs.exclude-paths }}
+    - ${{ inputs.exclude-unresolvable != 'false' &&  '--exclude-unresolvable' || ''}}
     - ${{ inputs.exclude-vulnerabilities &&  '--exclude-vulnerabilities'}}
     - ${{ inputs.exclude-vulnerabilities }}
     - ${{ inputs.fail-on-min-severity &&  '--fail-on-min-severity'}}
