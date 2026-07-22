@@ -46,6 +46,10 @@ inputs:
   fail-on-min-cvss-score:
     description: ''
     required: false
+  include-excluded-vulnerabilities:
+    default: 'none'
+    description: ''
+    required: false
   logs:
     default: 'false'
     description: ''
@@ -114,6 +118,8 @@ runs:
     - ${{ inputs.fail-on-min-severity }}
     - ${{ inputs.fail-on-min-cvss-score &&  '--fail-on-min-cvss-score'}}
     - ${{ inputs.fail-on-min-cvss-score }}
+    - ${{ inputs.include-excluded-vulnerabilities && '--include-excluded-vulnerabilities' }}
+    - ${{ inputs.include-excluded-vulnerabilities }}
     - ${{ inputs.logs != 'false' &&  '--logs' || ''}}
     - ${{ inputs.min-cvss-score &&  '--min-cvss-score'}}
     - ${{ inputs.min-cvss-score }}
