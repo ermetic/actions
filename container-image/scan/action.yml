@@ -64,6 +64,10 @@ inputs:
     default: 'results'
     description: ''
     required: false
+  output-include-ignored-vulnerabilities:
+    default: 'false'
+    description: ''
+    required: false
   output-junit-test-name-prefix:
     description: ''
     required: false
@@ -119,6 +123,7 @@ runs:
     - ${{ inputs.min-cvss-score }}
     - ${{ inputs.output-file-formats &&  '--output-file-formats'}}
     - ${{ inputs.output-file-formats }}
+    - ${{ inputs.output-include-ignored-vulnerabilities != 'false' &&  '--output-include-ignored-vulnerabilities' || ''}}
     - ${{ inputs.output-junit-test-name-prefix &&  '--output-junit-test-name-prefix'}}
     - ${{ inputs.output-junit-test-name-prefix }}
     - ${{ inputs.registry-password &&  '--registry-password'}}
